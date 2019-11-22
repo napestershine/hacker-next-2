@@ -5,11 +5,11 @@ const Layout = ({children, title, desciption}) => (
     <div>
         <Head>
             <title>{title}</title>
-            <meta name="description"  content={desciption} />
+            <meta name="description" content={desciption}/>
         </Head>
         <div className="container">
             <nav>
-                <Link>
+                <Link href="/">
                     <a>
                         <span className="main-title">Hacker Next</span>
                     </a>

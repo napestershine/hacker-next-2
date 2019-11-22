@@ -36,7 +36,7 @@ const StoryList = ({stories}) => (
             font-weight: bold;
         }
 
-        .story-dtails span {
+        .story-details span {
             margin-right: 1em;
         }
 
