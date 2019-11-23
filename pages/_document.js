@@ -23,8 +23,8 @@ export default class MyDocument extends Document {
                 <link rel="apple-touch-icon" type="image/png" sizes="192x192" href="/static/icons/icon-192x192.png"/>
             </Head>
             <body>
-                <Main />
-                <NextScript />
+            <Main/>
+            <NextScript/>
             </body>
             </html>
         );
