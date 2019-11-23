@@ -1,14 +1,17 @@
 import Link from 'next/link';
 import Head from 'next/head';
+import React from "react";
+import Router from 'next/router';
 
-const Layout = ({children, title, desciption}) => (
+const Layout = ({children, title, description, backButton}) => (
     <div>
         <Head>
             <title>{title}</title>
-            <meta name="description" content={desciption}/>
+            <meta name="description" content={description}/>
         </Head>
         <div className="container">
             <nav>
+                {backButton && <span onClick={() => Router.back()} className="back-button">&#x2B05;</span>}
                 <Link href="/">
                     <a>
                         <span className="main-title">Hacker Next</span>
@@ -24,7 +27,7 @@ const Layout = ({children, title, desciption}) => (
             .container {
                 max-width: 800px;
                 margin: 0 auto;
-                backgroud: #f6f6ef;
+                background: #f6f6ef;
             }
 
             nav {
@@ -44,6 +47,13 @@ const Layout = ({children, title, desciption}) => (
             nav .main-title {
                 font-weight: bold;
             }
+
+            nav .back-button {
+                font-size: 0.9rem;
+                padding-right: 1em;
+                cursor: pointer;
+            }
+
             `}
         </style>
 
