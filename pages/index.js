@@ -11,7 +11,9 @@ class Index extends React.Component {
 
         try {
             page = Number(query.page) || 1;
-            const response = await fetch(`https://node-hnapi.herokuapp.com/news?page=${page}`);
+            const response = await fetch(
+                `https://node-hnapi.herokuapp.com/news?page=${page}`
+            );
             stories = await response.json();
         } catch (err) {
             console.log(err);
@@ -22,13 +24,14 @@ class Index extends React.Component {
 
     componentDidMount() {
         if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
+            navigator.serviceWorker
+                .register('/service-worker.js')
                 .then(registration => {
-                    console.log('service worker registration successful', registration);
+                    console.log("service worker registration successful", registration);
                 })
                 .catch(err => {
-                    console.log('Service worker registration failed', err.message);
-                })
+                    console.warn("Service worker registration failed", err.message);
+                });
         }
     }
 
@@ -37,11 +40,14 @@ class Index extends React.Component {
         const {stories, page} = this.props;
 
         if (stories.length === 0) {
-            return <Error statusCode={503}/>
+            return <Error statusCode={503}/>;
         }
 
         return (
-            <Layout title="Hacker Next" desciption="A Hacker News clone made in Next.js">
+            <Layout
+                title="Hacker Next"
+                desciption="A Hacker News clone made in Next.js"
+            >
                 <StoryList stories={stories}/>
 
                 <footer>
@@ -50,9 +56,7 @@ class Index extends React.Component {
                     </Link>
                 </footer>
 
-                <style jsx>
-                    {`
-
+                <style jsx>{`
                     footer {
                         padding: 1em;
                     }
@@ -62,8 +66,7 @@ class Index extends React.Component {
                         color: black;
                         text-decoration: none;
                     }
-                    `}
-                </style>
+              `}</style>
             </Layout>
         );
     }

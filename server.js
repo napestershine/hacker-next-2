@@ -9,12 +9,13 @@ const app = next({dev});
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-    http.createServer((req, res) => {
-        /* parse request url to get its pathname */
+    http
+        .createServer((req, res) => {
+        /* Parse request url to get its pathname */
         const parsedUrl = url.parse(req.url, true);
         const {pathname} = parsedUrl;
 
-        /** if a Service worker is requested, serve it as a static file */
+        /** If a Service worker requested, serve it as a static file */
 
         if (pathname === '/service-worker.js') {
             const filePath = path.join(__dirname, ',next', pathname);
@@ -23,7 +24,8 @@ app.prepare().then(() => {
         } else {
             handle(req, res, parsedUrl);
         }
-    }).listen(port, () => {
+    })
+        .listen(port, () => {
         console.log(`Listening on PORT ${port}`);
     });
 });

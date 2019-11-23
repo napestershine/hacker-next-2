@@ -1,4 +1,3 @@
-import React from "react";
 import Comment from './Comment';
 
 export default ({comments}) => (
@@ -7,4 +6,4 @@ export default ({comments}) => (
             <Comment key={comment.id} comment={comment}/>
         ))}
     </React.Fragment>
-)
+);
